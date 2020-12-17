@@ -7,6 +7,9 @@ var map;
 var fullLocationList = [];
 
 
+function clicks() {
+    this.onclick.add('bold')
+}
 function initMap() {
     //Map options
     var options = {
@@ -15,8 +18,6 @@ function initMap() {
     }
     //new map
     map = new google.maps.Map(document.getElementById('map'), options);
-
-    // Array of markers
 
 
     const api_url = 'https://data.austintexas.gov/resource/fmm2-ytyt.json';
@@ -34,23 +35,16 @@ function initMap() {
                 coords: {lat: latitude, lng: longitude},
                 content: address
             });
-
-
         }
-
         var $locations = $('ul#potLocations')
         $.each(fullLocationList, function (index, value) {
             $('<li class="list-group-item"><a href="#">' + value.address + '</a></li>').appendTo($locations);
         });
 
     }
-
     getCoords();
 
-
-
 }
-
 
 //Add Marker Function
 function addMarker(props) {
@@ -60,7 +54,10 @@ function addMarker(props) {
 
         // icon: props.iconImage
     });
+    marker.addListener('click', function () {
+        infoWindow.open(map, marker);
 
+    });
     //check for custom icon
     if (props.iconImage) {
         //set icon image
@@ -72,11 +69,6 @@ function addMarker(props) {
         var infoWindow = new google.maps.InfoWindow({
             content: props.content
         });
-        marker.addListener('click', function () {
-            infoWindow.open(map, marker);
-        });
-
-
     }
     fullLocationList.push({marker: marker, address: props.content})
 
@@ -88,7 +80,7 @@ function filterPotholes() {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById('potholeInput');
 
-    if (input != null)  {
+    if (input != null) {
         filter = input.value.toUpperCase();
 
         ul = document.getElementById("potLocations");
@@ -98,7 +90,6 @@ function filterPotholes() {
         for (i = 0; i < fullLocationList.length; i++) {
             fullLocationList[i].marker.setMap(null)
         }
-
 
 
 // Loop through all list items, and hide those who don't match the search query
@@ -114,36 +105,25 @@ function filterPotholes() {
 
         // Rebuild markers based on current li html list
         // if style display in html is set to none
+        var filter_list = Array.from(li).filter(list_item => list_item.style.display !== "none")
+        if (filter_list.length >= 0) {
+
+            for (i = 0; i < filter_list.length; i++) {
+                a = filter_list[i].textContent
+
+                // We then take our list of addresses then compare the address string value to all
+                // map marker address. First one that matches return back the index number.
 
 
-            var filter_list =Array.from(li).filter(list_item => list_item.style.display !== "none")
-            if (filter_list.length >= 0) {
+                var index_num = fullLocationList.findIndex(marker_info => marker_info.address === a)
 
-                for (i = 0; i < filter_list.length; i++) {
-                    a = filter_list[i].textContent
+                // Re Associate the map with the map marker.
+                fullLocationList[index_num].marker.setMap(map)
 
-                    // We then take our list of addresses then compare the address string value to all
-                    // map marker adddress. First one that matches return back the index number.
-
-
-                    var index_num = fullLocationList.findIndex(marker_info => marker_info.address === a)
-
-                    // Reassociate the map with the map marker.
-                    fullLocationList[index_num].marker.setMap(map)
-
-                    // https://developers.google.com/maps/documentation/javascript/examples/marker-remove
-
-
-
-                }
+                // https://developers.google.com/maps/documentation/javascript/examples/marker-remove
             }
-
-
         }
-
-
-
-
+    }
 }
 
 filterPotholes();

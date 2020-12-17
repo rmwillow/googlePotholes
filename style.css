@@ -7,8 +7,8 @@
     margin-left: 10px;
     margin-right: 10px;
 
-
 }
+
 .title {
     font-family: arial,sans-serif-light,sans-serif;
     font-size: 45px;
@@ -61,8 +61,13 @@
     border: 1px solid lightgray;
     font-family: arial,sans-serif-light,sans-serif;
     font-size: 15px;
-}
 
+}
+#card {
+    font-size: 15px;
+    text-align: center;
+    text-decoration-color: crimson;
+}
 
 .card {
     min-width: auto;
@@ -73,7 +78,7 @@
     border: 1px solid lightgray;
     border-radius: 6px;
     font-family: arial,sans-serif-light,sans-serif;
-    font-size: 15px;
+
 }
 #page-banner{
 height: 15px;

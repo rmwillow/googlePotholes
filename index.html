@@ -8,6 +8,7 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxrYLSO8HNzjkP7g1bb1eeoNl_exHGnXo&callback=initMap&libraries=&v=weekly"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -40,7 +41,8 @@
                        placeholder="Search Pothole locations..."></form>
                 <br>
                 <div class="card-container">
-                    <div class="card">
+                    <div id="card" class="card">
+
 
                         <ul class="list-group list-group-flush" id="potLocations"></ul>
                     </div>
