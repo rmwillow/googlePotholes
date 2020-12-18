@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.1.13",
+    "@googlemaps/js-api-loader": "^1.11.1",
     "aws-sdk": "^2.800.0",
+    "dotenv": "^8.2.0",
     "google-maps": "^4.3.3",
     "node-fetch": "^2.6.1"
   },
