@@ -1,3 +1,8 @@
+//Created by Rachel McGrath
+//Create file called api.js
+//copy and paste code below in api.js file
+//do not forget to add your own apiKey
+
 // Create the script tag, set the appropriate attributes
 var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
