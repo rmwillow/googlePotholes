@@ -4,7 +4,7 @@
 > **Purpose**:
 A website that displays and allows you to search potholes all over austin!
 <br />
-> 
+
 > ## How to use Application
 
 > 1) Clone GitHub Project
