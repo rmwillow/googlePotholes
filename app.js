@@ -2,7 +2,6 @@ var data;
 var latitude = [];
 var longitude = [];
 var address = [];
-var fullLocationList = [];
 var map;
 var fullLocationList = [];
 
@@ -10,6 +9,7 @@ var fullLocationList = [];
 function clicks() {
     this.onclick.add('bold')
 }
+
 function initMap() {
     //Map options
     var options = {
@@ -42,6 +42,7 @@ function initMap() {
         });
 
     }
+
     getCoords();
 
 }
@@ -127,4 +128,3 @@ function filterPotholes() {
 }
 
 filterPotholes();
-
